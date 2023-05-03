@@ -16,4 +16,13 @@ public class CustomerAdapter {
                 .otp(customerEntity.getOtp())
                 .otpExpiry(customerEntity.getOtpExpiry()).build();
     }
+
+    public CustomerEntity customerDtoToEntity(CustomerDto customerDto){
+        return CustomerEntity.builder()
+                .customerId(customerDto.getCustomerId())
+                .mobile(customerDto.getMobile())
+                .name(customerDto.getName())
+                .otp(customerDto.getOtp())
+                .otpExpiry(customerDto.getOtpExpiry()).build();
+    }
 }

@@ -8,6 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CustomerRepository extends JpaRepository<CustomerEntity,Long> {
 
-    @Query(nativeQuery = true,value = "SELECT * FROM customer_entity where mobile = :s")
-    CustomerEntity findByMobile(String s);
+    CustomerEntity findFirstByMobile(String mobile);
 }

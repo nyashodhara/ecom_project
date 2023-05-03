@@ -4,14 +4,9 @@ import com.example.ecom.Adapter.CustomerAdapter;
 import com.example.ecom.Dto.CustomerDto;
 import com.example.ecom.Entity.CustomerEntity;
 import com.example.ecom.Service.CustomerService;
-import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
+import com.example.ecom.Utility.ResponseWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class CustomerController {
@@ -19,10 +14,9 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @GetMapping(value = "/all")
-    public CustomerDto getAll(){
-        CustomerEntity customerEntities = customerService.getAll();
-        return CustomerAdapter.customerEntityToDto(customerEntities);
+    @PostMapping(value = "/register")
+    public ResponseWrapper<CustomerDto> customerRegister(@RequestBody CustomerDto customerDto){
+        customerDto = customerService.registerCustomer(customerDto);
+        return new ResponseWrapper<>("Success","Success",200,customerDto);
     }
-
 }
