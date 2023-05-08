@@ -8,4 +8,6 @@ import java.util.List;
 public interface CustomerService {
 
     CustomerDto registerCustomer(CustomerDto customerDto);
+
+    CustomerDto customerLogin(CustomerDto customerDto);
 }

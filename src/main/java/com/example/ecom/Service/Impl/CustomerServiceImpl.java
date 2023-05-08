@@ -29,4 +29,19 @@ public class CustomerServiceImpl implements CustomerService {
         }
         return CustomerAdapter.customerEntityToDto(customerEntity);
     }
+
+    @Override
+    public CustomerDto customerLogin(CustomerDto customerDto) {
+        CustomerEntity customerEntity = customerRepository.findFirstByMobile(customerDto.getMobile());
+        if (Objects.nonNull(customerEntity)){
+            if (Objects.equals(customerEntity.getPassword(),customerDto.getPassword())){
+                return CustomerAdapter.customerEntityToDto(customerEntity);
+            }
+            else {
+                throw new DuplicateException("Invalid Password");
+            }
+        }else {
+            throw new DuplicateException("Customer not exist");
+        }
+    }
 }
