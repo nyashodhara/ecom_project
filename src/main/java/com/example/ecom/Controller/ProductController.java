@@ -19,7 +19,7 @@ public class ProductController {
 
     @PostMapping(value = "/list")
     public ResponseWrapper<List<ProductDto>> searchProducts(@RequestBody ProductSearchDto productSearchDto){
-        List<ProductDto> productDtos = productService.searchProducts(productSearchDto);
-        return new ResponseWrapper<>("Success","Success",200,productDtos);
+        //List<ProductDto> productDtos = productService.searchProducts(productSearchDto);
+        return new ResponseWrapper<>("Success","Success",200,null);
     }
 }
