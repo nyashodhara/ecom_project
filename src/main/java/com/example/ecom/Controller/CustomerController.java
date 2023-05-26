@@ -32,13 +32,4 @@ public class CustomerController {
         customerDto = customerService.customerLogin(customerDto);
         return new ResponseWrapper<>("Success","Success",200,customerDto);
     }
-
-    @Autowired
-    private ProductService productService;
-
-    @PostMapping(value = "/list")
-    public ResponseWrapper<List<ProductDto>> searchProducts(@RequestBody ProductSearchDto productSearchDto){
-        List<ProductDto> productDtos = productService.searchProducts(productSearchDto);
-        return new ResponseWrapper<>("Success","Success",200,productDtos);
-    }
 }
